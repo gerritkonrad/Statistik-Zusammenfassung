@@ -1,0 +1,26 @@
+---
+title: "Statistik Zusammenfassung"
+author: "Gerrit Konrad"
+date: "`r Sys.Date()`"
+lang: de-de
+output: 
+  pdf_document:
+    number_sections: true
+    citation_package: biblatex
+bibliography: references.bib
+---
+
+\newpage
+\tableofcontents
+\newpage
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Test
+[@Studienbuch]
+[@bchwtzStat]
+
+\newpage
+

@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Ignoriere .DS_Store-Dateien in allen Ordnern des Projekts
+**/.DS_Store
