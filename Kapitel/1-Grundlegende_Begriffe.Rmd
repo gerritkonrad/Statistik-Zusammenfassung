@@ -1,0 +1,63 @@
+# Grundlegende Begriffe
+
+## Statistische Einheit
+
+Die statistische Einheit ist das Objekt, an dem Messungen oder Beobachtungen durchgeführt werden. Beispiele sind Personen, Unternehmen oder Produkte.
+
+*Beispiel:* Ein einzelner Schüler in einer Schule.
+
+## Grundgesamtheit, Teilgesamtheiten, Stichproben
+
+- **Grundgesamtheit:** Gesamtheit aller möglichen Untersuchungseinheiten. 
+*Beispiel:* Alle Schüler einer Schule.
+  
+- **Teilgesamtheiten:** Untergruppen der Grundgesamtheit.
+*Beispiel:* Alle Schüler einer bestimmten Klasse.
+
+- **Stichprobe:** Eine Auswahl von Einheiten aus der Grundgesamtheit, die zur Analyse herangezogen wird.
+*Beispiel:* 30 zufällig ausgewählte Schüler aus der gesamten Schule.
+
+## Merkmale und Merkmalsausprägungen
+
+- **Merkmale:** Eigenschaften, die an den statistischen Einheiten gemessen werden.
+*Beispiel:* Körpergröße der Schüler.
+
+- **Merkmalsausprägungen:** Konkrete Werte, die ein Merkmal annehmen kann.
+*Beispiel:* 160 cm, 170 cm, 180 cm, etc.
+
+## Merkmalstypen und Messniveaus
+
+- **Merkmalstypen:**
+Während nominal- und ordinalskalierte Merkmale nur diskret aufgefasst werden können, lassen sich metrisch skalierte Merkmale sowohl diskret als auch stetig dar- stellen.
+
+  - **Diskrete Merkmale:** Können nur bestimmte, abzählbare Werte annehmen.
+  *Beispiel:* Anzahl der Kinder in einer Familie (0, 1, 2, ...).
+  
+  - **Stetige Merkmale:** Können jeden beliebigen Wert innerhalb eines Intervalls annehmen, je nachdem wie genau die Messung erfolgt.
+  *Beispiel:* Körpergröße in Zentimetern.
+
+- **Messniveaus:**
+
+  - **Nominal:** Kategorische Daten ohne natürliche Reihenfolge.
+  *Beispiel:* Geschlecht (männlich, weiblich).
+  
+  - **Ordinal:** Kategorische Daten mit natürlicher Reihenfolge, aber ohne festen Abstand zwischen den Kategorien.
+  *Beispiel:* Schulnoten (sehr gut, gut, befriedigend).
+  
+  - **Metrisch:** Umfasst sowohl intervallskalierte als auch verhältnisskalierte Daten, da beide kontinuierliche und messbare Größen darstellen.
+  
+    - **Intervallskaliert:** Numerische Daten mit gleichen Abständen zwischen den Werten, aber ohne natürlichen Nullpunkt.
+    *Beispiel:* Datumsangaben.
+    
+    - **Verhältnisskaliert:** Numerische Daten mit gleichen Abständen und einem natürlichen Nullpunkt. Man kann sagen "Ein Wert ist doppelt so groß wie ein anderer".
+    *Beispiel:* Gewicht in Kilogramm. 
+
+## Methoden der deskriptiven Statistik
+
+Methoden zur Darstellung und Analyse von Daten umfassen Tabellen, Grafiken und statistische Kennzahlen wie Mittelwert, Median und Standardabweichung.
+
+*Beispiele:*
+
+- *Tabellen:* Frequenzverteilung einer Umfrage.
+- *Grafiken:* Säulendiagramm der Häufigkeit von Schulnoten.
+- *Statistische Kennzahlen:* Mittelwert der Körpergröße, Median des Alters, Standardabweichung des Gewichts.

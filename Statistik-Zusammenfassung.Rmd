@@ -18,6 +18,31 @@ bibliography: references.bib
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Vorwort
+
+Statistik ist ein Teilgebiet der Mathematik, das Methoden bereitstellt, um Daten zu beschreiben und aus Stichproben Schlussfolgerungen über eine Grundgesamtheit zu ziehen. Die Statistik gliedert sich in drei Hauptbereiche:
+
+- **Deskriptive Statistik:** Darstellung und Charakterisierung umfangreicher Datensätze durch einfache Maßzahlen.
+- **Analytische Statistik:** Verallgemeinerung von Stichprobendaten auf die Grundgesamtheit unter Berücksichtigung zufälliger Schwankungen.
+- **Wahrscheinlichkeitstheorie:** Grundlage für Schätz- und Testverfahren der Analytischen Statistik, berechnet Wahrscheinlichkeiten zukünftiger Beobachtungen.
+
+## Was ist Statistik?
+
+Statistik umfasst Methoden zur Sammlung, Analyse, Interpretation und Präsentation von Daten. Hierbei unterscheidet man zwischen:
+
+- **Deskriptive Statistik:** Ziel ist es, Daten verständlich und übersichtlich darzustellen.
+- **Analytische Statistik:** Erlaubt es, aus Stichproben Rückschlüsse auf die Grundgesamtheit zu ziehen, indem zufällige Schwankungen quantifiziert werden.
+- **Wahrscheinlichkeitstheorie:** Dient als Basis für die Analytische Statistik, indem sie Wahrscheinlichkeitsmodelle und Berechnungen für zukünftige Ereignisse liefert.
+
+Die Anwendung statistischer Methoden erfolgt häufig mit Computerprogrammen, wobei in diesem Buch Excel für die Durchführung statistischer Analysen genutzt wird.
+
+\newpage
+
+```{r child = 'Kapitel/1-Grundlegende_Begriffe.Rmd'}
+```
+
+\newpage
+
 # Test
 [@Studienbuch]
 [@bchwtzStat]
