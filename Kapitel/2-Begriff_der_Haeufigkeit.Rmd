@@ -1,0 +1,163 @@
+# Begriffe der Häufigkeit
+
+## Absolute und relative Häufigkeit
+Die **absolute Häufigkeit** $H_j$ gibt an, wie oft ein bestimmtes Ereignis $j$ in einer Datenreihe vorkommt.
+
+$H_j = \text{Anzahl der Beobachtungen von } j$
+
+Wenn $n$ statistische Einheiten beobachtet werden, gilt:
+
+$$\sum_{j=1}^{k} H_j = n$$
+
+Die **relative Häufigkeit** $h_j$ ist das Verhältnis der absoluten Häufigkeit zur Gesamtzahl der Beobachtungen $n$. Wird oft in Prozent ausgedrückt:
+
+$h_j = \frac{H_j}{n}$
+
+Die relative Häufigkeit nimmt Werte zwischen 0 und 1 an und es gilt:
+
+$$\sum_{j=1}^{k} h_j = 1$$
+**Beispiel:**
+Die Zylinderzahlen der untersuchten Autos können folgendermaßen zusammengefasst werden:
+
+```{r, echo = FALSE}
+data(mtcars)
+
+# Absolute Häufigkeiten berechnen
+abs_freq <- table(mtcars$cyl)
+
+# Relative Häufigkeiten berechnen
+rel_freq <- proportions(abs_freq)
+
+# Tabelle mit absoluten und relativen Häufigkeiten erstellen
+result_table <- data.frame(
+  Zylinder = names(abs_freq),
+  Absolute_Häufigkeit = as.vector(abs_freq),
+  Relative_Häufigkeit = as.vector(rel_freq)
+)
+
+# Summenzeile hinzufügen
+sum_row <- data.frame(
+  Zylinder = "Summe",
+  Absolute_Häufigkeit = sum(result_table$Absolute_Häufigkeit),
+  Relative_Häufigkeit = sum(result_table$Relative_Häufigkeit)
+)
+
+final_table <- rbind(result_table, sum_row)
+
+# Tabelle anzeigen
+knitr::kable(final_table, digits = 3)
+```
+
+Wenn Merkmalsausprägungen kontinuierlich oder zu zahlreich sind, werden sie in Klassen zusammengefasst. Jede Klasse wird durch eine untere und obere Grenze, eine Klassenmitte und eine Klassenbreite definiert. Die Häufigkeiten werden für die Klassen berechnet. Formel bleibt also gleich.
+
+## Graphische Darstellungsmöglichkeiten von Häufigkeiten
+```{r, echo = FALSE}
+par(mfrow=c(1,3))
+plot(abs_freq, main = "Stabdiagramm", xlab = "Zylinder", ylab = expression(H[j]))
+barplot(abs_freq, main = "Säulendiagramm", xlab = "Zylinder", ylab = expression(H[j]))
+plot(abs_freq, type = "b", main = "Häufigkeitspolygon", xlab = "Zylinder", ylab = expression(H[j]))
+```
+
+### Histogramm {-}
+Ein **Histogramm** ist eine Möglichkeit, die Häufigkeitsverteilung klassierter Daten graphisch darzustellen.
+
+Im folgenden Beispiel analysieren wir die Kraftstoffeffizienz von Fahrzeugen, gemessen in Meilen pro Gallone (mpg).
+
+#### Histogramme mit äquidistanten Klassen: {-}
+Bei Histogrammen mit äquidistanten Klassen sind die Intervalle (Klassenbreiten) gleich groß. Dies bedeutet, dass jeder Balken die gleiche Breite hat. Der Vorteil dieser Methode ist die einfache Vergleichbarkeit der Häufigkeiten in den einzelnen Klassen.
+
+```{r, echo = FALSE}
+breaks <- c(0, 5, 10, 15, 20, 25, 30, 35)
+hist_data <- hist(mtcars$mpg, breaks = breaks, plot = FALSE)
+
+# Tabelle erstellen
+table_data <- data.frame(
+  j = 1:length(hist_data$counts),
+  Klasse = paste0("[", hist_data$breaks[-length(hist_data$breaks)], ";", hist_data$breaks[-1], ")"),
+  Hj = hist_data$counts,
+  hj = hist_data$counts / sum(hist_data$counts),
+  Klassenbreite = diff(hist_data$breaks)
+)
+
+knitr::kable(table_data, digits = 5)
+
+hist(mtcars$mpg, 
+     main = "Histogramm der Kraftstoffeffizienz (gleiche Klassenbreiten)",
+     xlab = "Meilen pro Gallone (mpg)",
+     ylab = "Absolute Klassenhäufigkeit",
+     col = "skyblue",
+     border = "black",
+     breaks = breaks)
+```
+
+
+#### Histogramme mit ungleichen Klassenbreiten: {-}
+Bei Histogrammen mit ungleichen Klassenbreiten variieren die Intervalle in ihrer Breite. Um die Vergleichbarkeit der Häufigkeiten zu gewährleisten, wird in diesen Histogrammen oft die Höhe der Balken nicht direkt durch die Häufigkeit, sondern durch die sogenannte "normierte Häufigkeit", oder auch genannt "Häufigkeitsdichte" bestimmt. Die normierte Häufigkeit wird berechnet als:
+
+$$\text{Normierte Häufigkeit} = \frac{Häufigkeit}{Klassenbreite}$$
+
+```{r, echo = FALSE}
+breaks <- c(0, 8, 15, 22, 28, 35)
+hist_data <- hist(mtcars$mpg, breaks = breaks, plot = FALSE)
+
+# Tabelle erstellen
+table_data <- data.frame(
+  j = 1:length(hist_data$counts),
+  Klasse = paste0("[", hist_data$breaks[-length(hist_data$breaks)], ";", hist_data$breaks[-1], ")"),
+  Hj = hist_data$counts,
+  hj = hist_data$counts / sum(hist_data$counts),
+  Klassenbreite = diff(hist_data$breaks),
+  norm_Hj = hist_data$counts / diff(hist_data$breaks),
+  norm_hj = (hist_data$counts / sum(hist_data$counts)) / diff(hist_data$breaks)
+)
+
+knitr::kable(table_data, digits = 5)
+
+hist(mtcars$mpg, 
+     main = "Histogramm der Kraftstoffeffizienz (ungleiche Klassenbreiten)",
+     xlab = "Meilen pro Gallone (mpg)",
+     ylab = "Normierte relative Klassenhäufigkeit",
+     col = "skyblue",
+     border = "black",
+     breaks = breaks)
+```
+
+
+### Kreisdiagramm (Pie Chart) {-}
+Darstellung der relativen Häufigkeiten als Segmente eines Kreises. Der Kreis repräsentiert die Gesamtheit der Daten, und die Segmente repräsentieren die Anteile der verschiedenen Ausprägungen.
+
+### Piktogramm {-}
+Darstellung der Häufigkeiten durch Bilder oder Symbole, die proportional zur Häufigkeit sind.
+
+
+## Empirische Verteilungsfunktionen $S_j$
+Eine empirische Verteilungsfunktion beschreibt die Verteilung von Merkmalsausprägungen in einer Beobachtungsreihe. Sie gibt die kumulierte Häufigkeit bis zu einem bestimmten Wert an und ist besonders nützlich für die Analyse von ordinalen oder metrischen Merkmalen.
+
+Die **absolute Summenhäufigkeit** $H_j$ ist die kumulierte Anzahl der Beobachtungen bis zu einer bestimmten Merkmalsausprägung.
+$$H_j = \sum_{i=1}^{j} H_i$$
+Beispiel: Wenn $H_1, H_2, H_3, …, H_j$ die absoluten Häufigkeiten sind, dann ist $H_j$ die Summe der absoluten Häufigkeiten bis zur j-ten Ausprägung.
+
+
+Die **relative Summenhäufigkeit** ist das Verhältnis der absoluten Summenhäufigkeit zur Gesamtzahl der Beobachtungen und gibt den Anteil der Beobachtungen an, die höchstens den Wert x haben.
+$$S_j = \sum_{i=1}^{j} h_i$$
+Als Beispiel nehmen wir wieder die Kraftstoffeffizienz von Fahrzeugen:
+
+```{r, echo = FALSE}
+breaks <- c(0, 8, 15, 22, 28, 35)
+hist_data <- hist(mtcars$mpg, breaks = breaks, plot = FALSE)
+
+# Tabelle neu erstellen
+table_data <- data.frame(
+  j = 1:length(hist_data$counts),
+  Klasse = paste0("[", hist_data$breaks[-length(hist_data$breaks)], ";", hist_data$breaks[-1], ")"),
+  Hj = hist_data$counts,
+  hj = hist_data$counts / sum(hist_data$counts),
+  emp.Verteilungsfkt. = cumsum(hist_data$counts / sum(hist_data$counts))
+)
+
+knitr::kable(table_data, digits = 5)
+
+x <- rep(breaks[-length(breaks)],times=table_data$Hj)
+plot(ecdf(x), main="Empirische Verteilungsfunktion",
+     xlab = expression(j), ylab = expression(S[j]))
+```

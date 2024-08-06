@@ -16,6 +16,7 @@ bibliography: references.bib
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
 ```
 
 ## Vorwort
@@ -37,10 +38,11 @@ Statistik umfasst Methoden zur Sammlung, Analyse, Interpretation und Präsentati
 Die Anwendung statistischer Methoden erfolgt häufig mit Computerprogrammen, wobei in diesem Buch Excel für die Durchführung statistischer Analysen genutzt wird.
 
 \newpage
-
 ```{r child = 'Kapitel/1-Grundlegende_Begriffe.Rmd'}
 ```
-
+\newpage
+```{r child = 'Kapitel/2-Begriff_der_Haeufigkeit.Rmd'}
+```
 \newpage
 
 # Test
