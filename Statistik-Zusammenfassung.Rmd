@@ -44,6 +44,9 @@ Die Anwendung statistischer Methoden erfolgt häufig mit Computerprogrammen, wob
 ```{r child = 'Kapitel/2-Begriff_der_Haeufigkeit.Rmd'}
 ```
 \newpage
+```{r child = 'Kapitel/3-Maßzahlen.Rmd'}
+```
+\newpage
 
 # Test
 [@Studienbuch]

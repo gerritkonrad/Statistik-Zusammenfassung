@@ -1,0 +1,67 @@
+# Maßzahlen zur Beschreibung von Häufigkeitsverteilungen
+Häufigkeitsverteilungen können durch Maßzahlen oder Parameter charakterisiert werden, die es ermöglichen, zentrale Eigenschaften einer Verteilung zusammenzufassen. Dazu gehören Lagemaße, Streuungsmaße und Formmaße.
+
+## Lagemaße
+Beschreiben das Zentrum / die Mitte einer Beobachtungsreihe
+
+### Arithmetisches Mittel
+Es ist das am häufigsten verwendete Lagemaß für metrische Merkmale. Es wird berechnet, indem die Summe aller beobachteten Werte durch die Anzahl der Beobachtungen geteilt wird.
+
+$$\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i$$
+wobei $x_i$ die einzelnen Beobachtungswerte und n die Anzahl der Beobachtungen sind.
+
+### Gewogenes arithmetisches Mittel
+Wenn die Beobachtungen unterschiedliche Gewichte $w_i$ haben, ergibt sich das gewogene arithmetische Mittel
+
+$$\bar{x}_w = \frac{1}{n} \sum_{i=1}^{n} w_i \cdot x_i$$
+wobei $w_i$ die absolute Häufigkeit ist.
+
+### Geometrische Mittel
+Wird verwendet um das durchschnittliche Wachstum über Zeiträume zu messen
+
+$$\bar{x}_\text{geo} = \sqrt[n]{x_1 \cdot x_2 \cdot \ldots \cdot x_n}$$
+
+### Harmonische Mittel
+Wenn ein funktionaler Zusammenhang besteht, z.B. Durchschnittsgeschwindigkeit
+
+$$\frac{n}{\sum_{i=1}^{n} 1/x_i}$$
+
+### Median
+Wird als Zentralwert bezeichnet und teilt die Daten in zwei gleich große Hälften. Kann für metrisch und ordinal skalierte Merkmale verwendet werden und ist robust gegenüber Ausreißern.
+
+$$
+\bar x_{Median} = 
+\begin{cases} 
+x_{\frac{n+1}{2}} & \text{falls } n \text{ ungerade} \\
+\frac{1}{2} (x_{\frac{n}{2}} + x_{\frac{n}{2}+1}) & \text{falls } n \text{ gerade} \\
+\end{cases}
+$$
+
+### Quantile
+Index berechnung: $I = n \cdot p$
+
+**Berechnung des Quantils $p$:**
+$$
+x_p = 
+\begin{cases} 
+\frac{1}{2} (x_I + x_{I+1}) & \text{falls } I \text{ ganzzahlig} \\
+x_{[I]+1} & \text{falls } I \text{ nicht ganzzahlig} \\
+\end{cases}
+$$
+[] = abrunden.
+
+### Modus
+Der **Modus** oder **Modalwert** ist die häufigste Ausprägung einer Verteilung.
+
+$$h_{Modus} \geq h_j$$
+
+### Zusammenfassung
+Lagemaß                     Symbol                 Berechnung
+-------------------------   --------------------   ----------------
+Modus                       $\bar x_{Modus}$       $h_{Modus} \geq h_j$
+Median                      $\bar x_{Median}$      $x_{\frac{n+1}{2}} \text{ oder } \frac{1}{2} (x_{\frac{n}{2}} + x_{\frac{n}{2}+1})$
+Quantil                     $Q_\alpha$             Wert der Verteilungsfunktion
+Arithmetisches Mittel       $\bar x$               $\frac{1}{n}\sum_{i=1}^{n}x_i$
+Geometrisches Mittel        $\bar x_{geo}$         $\sqrt[n]{x_1 \cdot x_2 \cdot \ldots \cdot x_n}$
+Harmonisches Mittel         $\bar x_{harm}$        $\frac{n}{\sum_{i=1}^{n} 1/x_i}$
+-------------------------   --------------------   ----------------
