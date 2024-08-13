@@ -55,7 +55,7 @@ Der **Modus** oder **Modalwert** ist die häufigste Ausprägung einer Verteilung
 
 $$h_{Modus} \geq h_j$$
 
-### Zusammenfassung
+### Zusammenfassung Formeln
 Lagemaß                     Symbol                 Berechnung
 -------------------------   --------------------   ----------------
 Modus                       $\bar x_{Modus}$       $h_{Modus} \geq h_j$
@@ -65,3 +65,121 @@ Arithmetisches Mittel       $\bar x$               $\frac{1}{n}\sum_{i=1}^{n}x_i
 Geometrisches Mittel        $\bar x_{geo}$         $\sqrt[n]{x_1 \cdot x_2 \cdot \ldots \cdot x_n}$
 Harmonisches Mittel         $\bar x_{harm}$        $\frac{n}{\sum_{i=1}^{n} 1/x_i}$
 -------------------------   --------------------   ----------------
+
+## Zusammenhang zwischen Lagemaßen und Form
+```{r, echo=F, fig.height=3.5}
+par(mfrow=c(1,3))
+xlim <- c(-18,18)
+set.seed(1)
+hist(rsnorm(n = 10000, sd=5,xi=-1.5), probability=T, n=50, xlim=xlim, xlab ="", main="", xaxt='n', ylab=expression(h[j]))
+hist(rsnorm(n = 10000, sd=5,xi=1), probability=T, n=50, xlim=xlim, xlab ="", main="", xaxt='n', ylab=expression(h[j]))
+hist(rsnorm(n = 10000, sd=5,xi=1.5), probability=T, n=50, xlim=xlim, xlab ="", main="", xaxt='n', ylab=expression(h[j]))
+```
+
+- Linksschiefe Häufigkeitsverteilung: $\bar x < \bar x_{Median} < \bar x_{Modus}$
+- Symmetrische Häufigkeitsverteilung: $\bar x = \bar x_{Median} = \bar x_{Modus}$
+- Rechtsschiefe Häufigkeitsverteilung: $\bar x > \bar x_{Median} > \bar x_{Modus}$
+
+## Streuungsmaße
+### Spannweite
+Ist die differenz zwischen dem Maximum und Minimum einer Beobachtungsreihe.
+
+$$R = x_{max}- x_{min}$$
+
+### Quartilsabstand
+Gibt die Größe des Bereiches zwischen dem oberen und unteren Quartil einer Beobachtungsreihe an.
+
+$$Q_o - Q_u = Q_{0.75} - Q_{0.25}$$
+- Zwischen dem oberen und dem unteren Quartil liegen 50% der Beobachtungen.
+- Kann auch für ordinalskalierte Merkmale bestimmt werden.
+- Ist robust (unempfindlich gegenüber Ausreißern)
+
+### Varianz
+Mittlere quadrierte Abweichung vom arithmetischen Mittel
+
+$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar x)^2 \quad\text{oder}\quad s^2 = \frac{1}{N}\sum_{i=1}^{N}(x_i - \bar x)^2$$
+
+- Es gilt immer $s^2 \geq 0$
+- Wird unterschiedlich für die Stichprobe und die Grundgesamtheit (Population) berechnet.
+- Grundidee: Einbezug aller Abweichungen vom Mittelwert
+- Beobachtungen, die weit von $\bar x$ entfernt liegen, werden überproportional stark gewichtet.
+
+### Standardabweichung
+Ist die Wurzel aus der Varianz
+
+$$s = \sqrt{s^2}$$
+
+- Weist die gleiche Maßeinheit wie die Daten auf
+
+### Variationskoeffizient
+Ist der Quotient aus Standardabweichung und arithmetische Mittel
+
+$$V = \frac{s}{\bar x}$$
+
+- Ist vergleichbar
+
+### Zusammenfassung Formeln
+
+Lagemaß                     Symbol                 Berechnung
+-------------------------   --------------------   ----------------
+Spannweite                  $R$                    $x_{max}- x_{min}$
+Interquartilsabstand        $IQR$                  $Q_{0.75} - Q_{0.25}$
+(empirische) Varianz        $s^2$                  $\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar x)^2$
+Standardabweichung          $s$                    $\sqrt{s^2}$
+Variationskoeffizient       $V$                    $s / \bar x$
+-------------------------   --------------------   ----------------
+
+## Konzentrationsmaße
+Man spricht von Konzentration oder Ungleichheit, falls zu einem bestimmten Zeitpunkt ein relativ kleiner Anteil der Merkmalsträger einen hohen Anteil an der Summe der Merkmalswerte besitzt.
+
+### Lorenzkurve
+
+$$ k_j = \sum_{i=1}^j \frac{H_j}{n} = \sum_{i=1}^j h_j \quad und \quad l_j=\frac{\sum_{i=1}^j a_iH_i}{\sum_{i=1}^q a_iH_i} = \frac{\sum_{i=1}^j a_iH_i}{\sum_{i=1}^n x_i}$$
+
+$\sum_{i=1}^n x_i$ (Gesamtsumme aller Beobachtungswerte)
+
+- Die Lorenzkurzve verläuft durch die Punkte $(0,0)$ und $(1,1)$
+- Die Lorenzkurve verläuft immer **unterhalb** der Winkelhalbierenden.
+- Die Lorenzkurve ist winkelhalbierend, wenn alle Mermalsausprägungen gleich häufig vorkommen. Dann liegt keine Konzentration vor. Je weiter die Lorenzkurve sich von der Winkelhalbierenden entfernt, desto größer ist die Ungleichheit.
+
+**Beispiel**
+Einkommensverteilung der Länder A, B, C
+
+```{r}
+A <- c(1000, 3000, 4000, 4000, 8000)
+B <- c(2000, 2000, 4000, 8000)
+C <- c(1000, 2000, 5000, 8000)
+```
+
+**Lorenzkurve für Land A**
+```{r, echo=FALSE}
+A <- sort(A)
+
+H <- table(A) # Absolute Häufigkeit
+n <- length(A) # Gesamtlänge
+h <- H/n # Relative Häufigkeit
+
+k <- cumsum(h)
+l <- cumsum(H * unique(A)) / sum(A)
+
+df <- data.frame(
+  j = c(0:4),
+  Werte = c(0, unique(A)),
+  H_j = c(0, as.vector(H)),
+  h_j = c(0, as.vector(h)),
+  k = c(0, k),
+  l = c(0, l),
+  row.names = NULL
+)
+
+knitr::kable(df, digits = 3)
+```
+
+## Gini Koeffizient
+Das Doppelte der Fläche zwischen der Lorenzkurve und der Winkelhalbierenden heißt **Gini-Koeffizient** $G$ und wird als Konzentrationsmaß einer Häufigkeitsverteilung verwendet. 
+
+$$ G = \sum_{i=1}^{n} (k_i+k_{i-1}) (l_i-l_{i-1})-1$$
+
+- Um den Gini-Koeffizienten zu berechnen, sind alle Stützpunkte der Lorenzkurve erforderlich. Es gilt $0 \leq G \leq \frac{n-1}{n}<1$.
+- Wenn die Lorenzkurve winkelhalbierend ist, gilt $G=0$. In diesem Fall gibt es keine Einkommensunterschiede.
+- Werden *alle* Ausgangswerte $x_i$ mit einem Faktor $a$ multipliziert, sodass $y_i = a \cdot x_i$, dann gilt $G_y = G_x$.
