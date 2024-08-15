@@ -18,6 +18,7 @@ bibliography: references.bib
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 library(fGarch)
+library(ineq)
 ```
 
 ## Vorwort
@@ -46,6 +47,9 @@ Die Anwendung statistischer Methoden erfolgt häufig mit Computerprogrammen, wob
 ```
 \newpage
 ```{r child = 'Kapitel/3-Maßzahlen.Rmd'}
+```
+\newpage
+```{r child = 'Kapitel/4-Zweidimensionale-Verteilung.Rmd'}
 ```
 \newpage
 

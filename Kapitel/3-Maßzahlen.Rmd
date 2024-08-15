@@ -179,7 +179,13 @@ knitr::kable(df, digits = 3)
 Das Doppelte der Fläche zwischen der Lorenzkurve und der Winkelhalbierenden heißt **Gini-Koeffizient** $G$ und wird als Konzentrationsmaß einer Häufigkeitsverteilung verwendet. 
 
 $$ G = \sum_{i=1}^{n} (k_i+k_{i-1}) (l_i-l_{i-1})-1$$
+mit ($k_i$, $l_i$), $i=0,...,n$ Stützpunkte der Lorenzkurve
 
 - Um den Gini-Koeffizienten zu berechnen, sind alle Stützpunkte der Lorenzkurve erforderlich. Es gilt $0 \leq G \leq \frac{n-1}{n}<1$.
 - Wenn die Lorenzkurve winkelhalbierend ist, gilt $G=0$. In diesem Fall gibt es keine Einkommensunterschiede.
 - Werden *alle* Ausgangswerte $x_i$ mit einem Faktor $a$ multipliziert, sodass $y_i = a \cdot x_i$, dann gilt $G_y = G_x$.
+
+```{r, echo=FALSE}
+Gini(A)
+```
+

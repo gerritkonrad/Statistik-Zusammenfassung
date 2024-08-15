@@ -1,0 +1,37 @@
+# Zweidimensionale Verteilung
+
+## Streudiagramm
+Ein **Streudiagramm** (Scatter-Plot) ist eine grafische Darstellung von zweidimensionalen Merkmalen. Dabei werden die Wertepaare $(x_i, y_i)$ als Punkte in einem Koordinatensystem eingezeichnet:
+
+- **X-Achse**: Merkmalsausprägung für das Merkmal $X$.
+- **Y-Achse**: Merkmalsausprägung für das Merkmal $Y$.
+
+**Beispiel**: Die monatliche Sonnenscheindauer am Vormittag (X) und Nachmittag (Y) wird über ein Jahr hinweg beobachtet und als Punkte im Diagramm dargestellt.
+
+## Kontingenztafel
+Eine **Kontingenztafel** ist eine tabellarische Darstellung der gemeinsamen Häufigkeitsverteilung zweier Merkmale:
+
+- **Absolute Häufigkeit**: $H_{ij}$ ist die Anzahl der Beobachtungen mit der Merkmalskombination $(a_i, b_j)$.
+- **Relative Häufigkeit**: $h_{ij} = \frac{H_{ij}}{n}$ ist der Anteil der Beobachtungen mit $(a_i, b_j)$.
+
+**Randhäufigkeiten**:
+- Absolute Randhäufigkeit von $a_i$: $H_{i\cdot} = \sum_{j} H_{ij}$.
+- Relative Randhäufigkeit von $a_i$: $h_{i\cdot} = \sum_{j} h_{ij}$.
+
+## Korrelationskoeffizient
+Der **Korrelationskoeffizient** nach Bravais-Pearson misst den linearen Zusammenhang zwischen zwei Merkmalen $X$ und $Y$:
+
+- **Formel**: 
+  $$r_{XY} = \frac{s_{XY}}{s_X \cdot s_Y}$$
+  wobei $s_{XY}$ die Kovarianz ist, definiert als:
+  
+  $$s_{XY} = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})$$
+
+- **Standardabweichungen**:
+  $$s_X = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2}$$
+  $$s_Y = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \bar{y})^2}$$
+
+- **Interpretation**:
+  - $r_{XY} > 0$: Positive Korrelation.
+  - $r_{XY} < 0$: Negative Korrelation.
+  - $|r_{XY}| \leq 0.5$: Vermutlich kein signifikanter Zusammenhang.
