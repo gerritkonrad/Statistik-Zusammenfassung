@@ -52,6 +52,9 @@ Die Anwendung statistischer Methoden erfolgt häufig mit Computerprogrammen, wob
 ```{r child = 'Kapitel/4-Zweidimensionale-Verteilung.Rmd'}
 ```
 \newpage
+```{r child = 'Kapitel/5-Kombinatorik.Rmd'}
+```
+\newpage
 
 # Test
 [@Studienbuch]

@@ -1,0 +1,43 @@
+# Kombinatorik
+Die Kombinatorik beschäftigt sich mit dem Zählen von Möglichkeiten, Elemente aus einer Menge zusammenzustellen. Wichtige Konzepte sind:
+
+## Fakultäten und Binomialkoeffizienten
+- **Fakultät (n!)**: Das Produkt der ersten \(n\) natürlichen Zahlen. Wichtig für Permutationen.
+  - Beispiel: \(5! = 1 \times 2 \times 3 \times 4 \times 5 = 120\)
+  - \(0! = 1\) per Definition.
+
+- **Binomialkoeffizient \(\binom{n}{k}\)**: Gibt die Anzahl der Möglichkeiten an, \(k\) Elemente aus \(n\) auszuwählen.
+  - Formel: \(\binom{n}{k} = \frac{n!}{k!(n-k)!}\)
+
+## Permutationen
+- **Permutation**: Anordnung aller Elemente einer Menge.
+  - Beispiel: Für 3 verschiedenfarbige Kugeln gibt es \(3! = 6\) Anordnungen.
+
+- **Permutationen bei gleichen Elementen**: Wenn es gleiche Elemente gibt, reduziert sich die Anzahl der Permutationen.
+  - Formel: \(\frac{n!}{n_1!n_2!...n_k!}\) (für \(k\) Gruppen von gleichen Elementen)
+
+## Kombinationen
+- **Kombination ohne Wiederholung**: Auswahl von \(k\) Elementen aus \(n\), ohne Berücksichtigung der Reihenfolge.
+  - Formel: \(\binom{n}{k}\)
+
+- **Kombination mit Wiederholung**: Auswahl von \(k\) Elementen aus \(n\), wobei Wiederholungen erlaubt sind.
+  - Formel: \(\binom{n+k-1}{k}\)
+
+- **Variationen**: Kombinationen mit Berücksichtigung der Reihenfolge.
+  - Ohne Wiederholung: \(\frac{n!}{(n-k)!}\)
+  - Mit Wiederholung: \(n^k\)
+
+## Zusammenfassung
+\[
+\begin{array}{|c|c|c|}
+\hline
+\textbf{Modell} & \textbf{Ohne Wiederholung} & \textbf{Mit Wiederholung} \\
+\hline
+\text{Permutation} & P(n) = n! & P(n_1, n_2, \ldots, n_k) = \frac{n!}{n_1!n_2!\ldots n_k!} \\
+\hline
+\text{Kombinationen mit Reihenfolge} & V(n, k) = \frac{n!}{(n-k)!} & V_w(n, k) = n^k \\
+\hline
+\text{Kombinationen ohne Reihenfolge} & C(n, k) = \binom{n}{k} & C_w(n, k) = \binom{n+k-1}{k} \\
+\hline
+\end{array}
+\]
