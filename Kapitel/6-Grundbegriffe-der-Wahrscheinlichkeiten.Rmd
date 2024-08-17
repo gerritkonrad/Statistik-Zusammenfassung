@@ -1,0 +1,112 @@
+# Grundbegriffe der Wahrscheinlichkeiten
+
+## Zufallsexperimente und Ereignisse
+### Definition {-}
+Ein **Zufallsexperiment** ist ein Experiment, das folgende Bedingungen erfüllt:
+
+1. Es wird nach einer genau festgelegten Vorschrift durchgeführt.
+2. Es kann beliebig oft unter den gleichen Bedingungen wiederholt werden.
+3. Sein Ergebnis ist nicht mit Sicherheit vorhersehbar.
+
+Der **Ereignisraum** (Symbol: $\Omega$) ist die Menge aller möglichen Ergebnisse.
+
+### Sicheres und Unmögliches Ereignis {-}
+- **Sicheres Ereignis**: Tritt immer ein: $E = \Omega$.
+- **Unmögliches Ereignis**: Tritt nie ein:  $\varnothing = \{\}$.
+
+### Beispiele {-}
+- **Münzwurf**: $\Omega = \{Kopf, Zahl\}$
+- **Würfelwurf**: $\Omega = \{1, 2, 3, 4, 5, 6\}$
+- **Lebensdauer einer Glühlampe**: $\Omega = \{x | x \ge 0\}$
+
+## Rechnen mit Ereignissen
+### Definition {-}
+- **Komplementärereignis**: Das Ereignis $\bar{A}$, das eintritt, wenn A nicht eintritt: $\bar{A} \subset \Omega$.
+- **Disjunkte Ereignisse**: Zwei Ereignisse A und B, die nicht gleichzeitig eintreten können: $A \cap B = \varnothing$.
+
+### Mengenarten {-}
+- **Vereinigungsmenge**: $A \cup B$ Tritt ein, wenn A oder B oder beide eintreten.
+- **Schnittmenge**: $A \cap B$ Tritt ein, wenn A und B beide eintreten.
+- **Differenzmenge**: $A - B$ Tritt ein, wenn A eintritt, aber nicht B.
+
+### Beispiele {-}
+- **Komplementär**: „ungerade Zahl“ und „gerade Zahl“ beim Würfelwurf
+- **Disjunkt**: „Kugel fällt auf eine gerade Zahl“ und „Kugel fällt auf Zahl 15“ beim Roulette
+
+## Wahrscheinlichkeiten
+### Wahrscheinlichkeit (von Mises) {-}
+Die **statistische Wahrscheinlichkeit** eines Ereignisses A ist die relative Häufigkeit dieses Ereignisses bei einer sehr großen Anzahl n der Wiederholungen des Zufallsexperiments:
+
+$$ P(A) = \lim_{n \to \infty} \frac{H_n(A)}{n} =  \lim_{n \to \infty} h_n(A)$$
+
+#### Beispiel {-}
+Beim Würfeln eines fairen Würfels interessiert das Ereignis „Werfen einer geraden Zahl“ {2, 4, 6}. Mit zunehmender Anzahl von Würfen nähert sich die relative Häufigkeit dem Wert 0,5.
+
+### Wahrscheinlichkeit (Laplace) {-}
+Bei endlich vielen gleichwahrscheinlichen Ergebnissen.
+$$P(A) = \frac{|A|}{|\Omega|} \frac{\text{Anzahl der für A günstigen Ergebnisse}}{\text{Anzahl der möglichen Ergebnisse}}$$
+
+#### Beispiel {-}
+Bei zwei fairen Würfeln ist die Wahrscheinlichkeit für einen Pasch:
+$$P(\text{Pasch}) = \frac{6}{36} = \frac{1}{6}$$
+
+## Kolmogorovsche Axiome
+
+1. **Positivität**: $P(A) \geq 0$
+2. **Normiertheit**: $P(\Omega) = 1$
+3. **Additivität**: Für disjunkte Ereignisse $A$ und $B$, also $A \cap B = \varnothing$:
+   $$P(A \cup B) = P(A) + P(B)$$
+
+### Rechenregeln für Wahrscheinlichkeiten {-}
+- **Gesamtheit aller möglichen Ergebnisse**:
+  $$\sum_{i=1}^{n} P(A_i) = 1$$
+
+- **Unmögliches Ereignis**:
+  $$P(\varnothing) = 0$$
+
+- **Komplementäre Ereignisse**:
+  $$P(\bar{A}) = 1 - P(A)$$
+
+- **Vereinigung beliebiger Ereignisse**:
+  $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+
+- **Für disjunkte Ereignisse** $A$ und $B$:
+  $$P(A \cap B) = 0$$
+
+- **Ereignisse mit der Beziehung \( A \subseteq B \)**:
+  $$P(A) \leq P(B)$$
+  
+
+## Bedingte Wahrscheinlichkeiten
+Seien A und B zwei Ereignisse. Die Wahrscheinlichkeit des Ereignisses A unter der Bedingung, dass das Ereignis B bereits eingetreten ist, heißt **bedingte Wahrscheinlichkeit** von A unter B oder Wahrscheinlichkeit von A gegeben B und ist definiert als
+
+$$P(A|B) = \frac{P(A \cap B)}{P(B)} \quad \text{für}\quad P(B) \neq 0$$
+
+$P(A \cap B)$ kann als die Wahrscheinlichkeit, dass beide Ereignisse gleichzeitig eintreten, interpretiert werde
+
+Durch Umformung der Definition der bedingten Wahrscheinlichkeit erhält man den **Multiplikationssatz** der Wahrscheinlichkeitsrechnung:
+
+$$P(A \cap B) = P(A) \cdot P(B|A) \quad\text{sowie}\quad P(B \cap A) = P(B) \cdot P(A|B)$$  
+Es gilt zudem:
+
+$$ P(B \cap A) + P(B \cap \bar A) = P(B)$$
+$$P(\bar A| B) = 1- P(A|B)$$
+
+## Unabhängigkeit von Ereignissen
+Zwei Ereignisse $A$ und $B$ heißen **unabhängig**, wenn das Eintreten des einen Ereignisses die Wahrscheinlichkeit des Eintretens des anderen Ereignisses nicht beeinflusst. Dann gilt
+
+$$P(A \cap B) = P(A) \cdot P(B)$$
+
+## Satz der totalen Wahrscheinlichkeit
+Sei $A_1, A_2, \ldots, A_k$ eine disjunkte Zerlegung des Ereignisraumes $\Omega$. Wenn $B \subset \Omega,$ dann gilt
+
+$$P(B) = \sum_{i=1}^k P(A_i) \cdot P(B|A_i)$$
+
+## Satz von Bayes
+Ist die Verbindung zwischen den Wahrscheinlichkeiten $P(A|B)$ und $P(B|A)$. Diese bedingten Wahrscheinlichkeiten sind nicht gleich!
+
+Wenn der Ereignisraum $\Omega$ in $A$ und $\bar A$ partitioniert wird und $B$ ein beliebiges Ereignis aus $\Omega$ ist, gilt
+
+$$P(A|B) = \frac{P(A) \cdot P(B|A)}{P(B)}$$
+
+Der Satz von Bayes ergibt sich aus Kombination von $P(A|B) = \frac{P(A \cap B)}{P(B)}$ und $P(B|A) = \frac{P(B \cap A)}{P(A)}$.

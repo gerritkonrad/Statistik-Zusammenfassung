@@ -55,6 +55,9 @@ Die Anwendung statistischer Methoden erfolgt häufig mit Computerprogrammen, wob
 ```{r child = 'Kapitel/5-Kombinatorik.Rmd'}
 ```
 \newpage
+```{r child = 'Kapitel/6-Grundbegriffe-der-Wahrscheinlichkeiten.Rmd'}
+```
+\newpage
 
 # Test
 [@Studienbuch]
